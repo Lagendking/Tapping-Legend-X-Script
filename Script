@@ -1,0 +1,280 @@
+getgenv().autoTap = false
+getgenv().autoRebirth = false
+getgenv().autoEgg1 = false
+getgenv().autoEgg3 = false
+getgenv().selectEgg = ''
+getgenv().autoEquip = false
+getgenv().open3 = false
+getgenv().rebirthAmount = 0
+getgenv().drop = ''
+spawn(function()
+    game.Players.LocalPlayer.Character.LeftFoot.Touched:Connect(function(hit)
+        if hit.Parent.Parent.Parent.Name == 'Drops' then
+            drop = hit.Parent.Name    
+        end
+    end)
+end)
+
+local Eggs = {
+    [1] = 'Basic',
+    [2] = 'Rare',
+    [3] = 'Forest',
+    [4] = 'Desert',
+    [5] = 'Winter',
+    [6] = 'lava',
+    [7] = 'Aqua',
+    [8] = 'Sakura',
+    [9] = 'Mines',
+    [10] = 'Galaxy',
+}
+local Rebirths = {
+    [1] = '1',
+    [2] = '5',
+    [3] = '20',
+    [4] = '80',
+    [5] = '400',
+    [6] = '2K',
+    [7] = '10K',
+    [8] = '40K',
+    [9] = '100K',
+    [10] = '400K',
+    [11] = '2M',
+    [12] = '10M',
+    [13] = '40M',
+    [14] = '100M',
+    [15] = '500M',
+    [16] = '2B',
+    [17] = '10B',
+    [18] = '40B',
+    [19] = '200B',
+    [20] = '1T',
+    [21] = '2T',
+    [22] = '10T',
+    [23] = '40T',
+    [24] = '100T',
+    [25] = '500T',
+    [26] = '2Qd',
+}
+_G.MainColor = Color3.fromRGB(117, 30, 255)
+_G.MainTextColor = Color3.fromRGB(235, 235, 235)
+_G.SecondaryColor = Color3.fromRGB(35, 35, 35)
+_G.TertiaryColor = Color3.fromRGB(45, 45, 45)
+_G.ToggleColor = Color3.fromRGB(125, 38, 255)
+_G.ButtonColor = Color3.fromRGB(125, 38, 255)
+_G.DraggerCircleColor = Color3.fromRGB(125, 38, 255)
+
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
+
+local w = library:CreateWindow("Tapping Legends X")
+local a = w:CreateFolder("Auto")
+local b = w:CreateFolder("Misc")
+local c = w:CreateFolder("Controls")
+
+a:Toggle("Auto Tap",function(bool)
+    autoTap = bool
+    spawn(function()
+        while autoTap do
+            wait()
+            local args = {[1] = drop}
+            game:GetService("ReplicatedStorage").Remotes.Tap:FireServer(unpack(args))
+        end
+    end)
+end)
+
+a:Dropdown("Rebirth Amount",{unpack(Rebirths)},true,function(mob)
+    if mob == '1' then
+        rebirthAmount = 1 
+    elseif mob == '5' then
+        rebirthAmount = 2 
+    elseif mob == '20' then
+        rebirthAmount = 3
+    elseif mob == '80' then
+        rebirthAmount = 4 
+    elseif mob == '400' then
+        rebirthAmount = 5 
+    elseif mob == '2K' then
+        rebirthAmount = 6
+    elseif mob == '10K' then
+        rebirthAmount = 7
+    elseif mob == '40K' then
+        rebirthAmount = 8
+    elseif mob == '100K' then
+        rebirthAmount = 9
+    elseif mob == '400K' then
+        rebirthAmount = 10
+    elseif mob == '2M' then
+        rebirthAmount = 11
+    elseif mob == '10M' then
+        rebirthAmount = 12
+    elseif mob == '40M' then
+        rebirthAmount = 13
+    elseif mob == '100M' then
+        rebirthAmount = 14
+    elseif mob == '500M' then
+        rebirthAmount = 15
+    elseif mob == '2B' then
+        rebirthAmount = 16
+    elseif mob == '10B' then
+        rebirthAmount = 17
+    elseif mob == '40B' then
+        rebirthAmount = 18
+    elseif mob == '200B' then
+        rebirthAmount = 19
+    elseif mob == '1T' then
+        rebirthAmount = 20
+    elseif mob == '2T' then
+        rebirthAmount = 21
+    elseif mob == '10T' then
+        rebirthAmount = 22
+    elseif mob == '40T' then
+        rebirthAmount = 23
+    elseif mob == '100T' then
+        rebirthAmount = 24
+    elseif mob == '500T' then
+        rebirthAmount = 25
+    elseif mob == '2Qd' then
+        rebirthAmount = 26
+    end
+end)
+
+a:Toggle("Auto Rebirth",function(bool)
+    autoRebirth = bool
+    spawn(function()
+        while autoRebirth do
+            wait()
+            local args = {[1] = rebirthAmount}
+            game:GetService("ReplicatedStorage").Remotes.Rebirth:FireServer(unpack(args))
+        end
+    end)
+end)
+
+a:Dropdown("Select Egg",{unpack(Eggs)},true,function(mob)
+    selectEgg = mob
+end)
+
+a:Toggle("Auto Hatch x1",function(bool)
+    autoEgg1 = bool
+    if autoEgg1 then
+        game.Players.LocalPlayer.Character:MoveTo(game.Workspace.Eggs:FindFirstChild(selectEgg.. ' Egg').E.Position + Vector3.new(5, 0, 0) - Vector3.new(0, 2.4, 0))
+    end
+    spawn(function()
+        while autoEgg1 do
+            wait()
+            local args = {[1] = selectEgg..' Egg',[2] = 1}
+            game:GetService("ReplicatedStorage").Remotes.BuyEgg:InvokeServer(unpack(args))
+        end
+    end)
+end)
+
+a:Toggle("Auto Hatch x3",function(bool)
+    autoEgg3 = bool
+    if autoEgg3 then
+        game.Players.LocalPlayer.Character:MoveTo(game.Workspace.Eggs:FindFirstChild(selectEgg.. ' Egg').E.Position + Vector3.new(5, 0, 0) - Vector3.new(0, 2.4, 0))
+    end
+    spawn(function()
+        while autoEgg3 do
+            wait()
+            local args = {[1] = selectEgg..' Egg',[2] = 3}
+            game:GetService("ReplicatedStorage").Remotes.BuyEgg:InvokeServer(unpack(args))
+        end
+    end)
+end)
+
+a:Toggle("Auto Equip",function(bool)
+    autoEquip = bool
+    spawn(function()
+        while autoEquip do
+            wait(5)
+            if not autoEquip then return end
+            game:GetService("ReplicatedStorage").Remotes.UnequipAll:InvokeServer()
+            game:GetService("ReplicatedStorage").Remotes.EquipBest:InvokeServer()
+        end
+    end)
+end)
+
+getgenv().Speed = game.Players.LocalPlayer.Character.Humanoid.WalkSpeed
+b:Slider("Speed",{
+    min = 16;
+    max = 250;
+    precise = false;
+},function(value)
+    Speed = value
+end)
+spawn(function()
+    while wait() do
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Speed
+    end
+end)
+
+c:Bind("Index",Enum.KeyCode.E,function()
+    game.Players.LocalPlayer.PlayerGui.Menus.Index.Enabled = true
+    game.Players.LocalPlayer.PlayerGui.Menus.RainbowMachine.Enabled = false
+    game.Players.LocalPlayer.PlayerGui.Menus.Upgrades.Enabled = false
+    game.Players.LocalPlayer.PlayerGui.Menus.GoldenMachine.Enabled = false
+end)
+
+c:Bind("Upgrades",Enum.KeyCode.R,function()
+    game.Players.LocalPlayer.PlayerGui.Menus.Index.Enabled = false
+    game.Players.LocalPlayer.PlayerGui.Menus.RainbowMachine.Enabled = false
+    game.Players.LocalPlayer.PlayerGui.Menus.Upgrades.Enabled = true
+    game.Players.LocalPlayer.PlayerGui.Menus.GoldenMachine.Enabled = false
+end)
+
+c:Bind("Gold",Enum.KeyCode.T,function()
+    game.Players.LocalPlayer.PlayerGui.Menus.Index.Enabled = false
+    game.Players.LocalPlayer.PlayerGui.Menus.RainbowMachine.Enabled = false
+    game.Players.LocalPlayer.PlayerGui.Menus.Upgrades.Enabled = false
+    wait(0.1)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 0
+    local goldclone = workspace.UIProx.GoldenMachine:Clone()
+    goldclone.Parent = workspace.UIProx
+    goldclone.Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(0, 2, 0)
+    spawn(function()
+        while wait() do
+            if game.Players.LocalPlayer.PlayerGui.Menus.GoldenMachine.Enabled == false and game.Players.LocalPlayer.PlayerGui.Menus.MachineResult.Enabled == false then
+                game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 25
+                goldclone:Destroy()
+                return
+            end
+        end
+    end)
+    spawn(function()
+        while wait() do
+            if game.Players.LocalPlayer.PlayerGui.Menus.MachineResult.Enabled == true or game.Players.LocalPlayer.PlayerGui.Menus.GoldenMachine.Enabled == true then
+                game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 0
+            end
+        end
+    end)
+    if rainbowclone then
+        rainbowclone:Destroy()
+    end
+end)
+
+c:Bind("Rainbow",Enum.KeyCode.Y,function()
+    game.Players.LocalPlayer.PlayerGui.Menus.Index.Enabled = false
+    game.Players.LocalPlayer.PlayerGui.Menus.Upgrades.Enabled = false
+    game.Players.LocalPlayer.PlayerGui.Menus.GoldenMachine.Enabled = false
+    wait(0.1)
+    local rainbowclone = workspace.UIProx.RainbowMachine:Clone()
+    rainbowclone.Parent = workspace.UIProx
+    rainbowclone.Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(0, 2, 0)
+    spawn(function()
+        while wait() do
+            if game.Players.LocalPlayer.PlayerGui.Menus.RainbowMachine.Enabled == false and game.Players.LocalPlayer.PlayerGui.Menus.MachineResult.Enabled == false then
+                game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 25
+                rainbowclone:Destroy()
+                return
+            end
+        end
+    end)
+    spawn(function()
+        while wait() do
+            if game.Players.LocalPlayer.PlayerGui.Menus.MachineResult.Enabled == true or game.Players.LocalPlayer.PlayerGui.Menus.RainbowMachine.Enabled == true then
+                game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 0
+            end
+        end
+    end)
+    if goldclone then
+        goldclone:Destroy()
+    end
+end)
