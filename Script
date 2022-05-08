@@ -54,6 +54,7 @@ local Rebirths = {
     [24] = '100T',
     [25] = '500T',
     [26] = '2Qd',
+    [27] = '10Qd',
 }
 _G.MainColor = Color3.fromRGB(117, 30, 255)
 _G.MainTextColor = Color3.fromRGB(235, 235, 235)
@@ -61,7 +62,7 @@ _G.SecondaryColor = Color3.fromRGB(35, 35, 35)
 _G.TertiaryColor = Color3.fromRGB(45, 45, 45)
 _G.ToggleColor = Color3.fromRGB(125, 38, 255)
 _G.ButtonColor = Color3.fromRGB(125, 38, 255)
-_G.DraggerCircleColor = Color3.fromRGB(125, 38, 255)
+_G.SliderColor = Color3.fromRGB(125, 38, 255)
 
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
 
@@ -134,6 +135,8 @@ a:Dropdown("Rebirth Amount",{unpack(Rebirths)},true,function(mob)
         rebirthAmount = 25
     elseif mob == '2Qd' then
         rebirthAmount = 26
+    elseif mob == '10Qd' then
+        rebirthAmount = 27
     end
 end)
 
