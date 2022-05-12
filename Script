@@ -24,7 +24,7 @@ local Eggs = {
     [6] = 'lava',
     [7] = 'Aqua',
     [8] = 'Sakura',
-    [9] = 'Mines',
+    [9] = 'Mine',
     [10] = 'Galaxy',
 }
 local Rebirths = {
