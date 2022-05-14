@@ -6,14 +6,9 @@ getgenv().selectEgg = ''
 getgenv().autoEquip = false
 getgenv().open3 = false
 getgenv().rebirthAmount = 0
-getgenv().drop = ''
-spawn(function()
-    game.Players.LocalPlayer.Character.LeftFoot.Touched:Connect(function(hit)
-        if hit.Parent.Parent.Parent.Name == 'Drops' then
-            drop = hit.Parent.Name    
-        end
-    end)
-end)
+getgenv().afWalk = false
+getgenv().afTeleport = false
+getgenv().drop = 'nil'
 
 local Eggs = {
     [1] = 'Basic',
@@ -26,6 +21,7 @@ local Eggs = {
     [8] = 'Sakura',
     [9] = 'Mine',
     [10] = 'Galaxy',
+    [11] = '10M'
 }
 local Rebirths = {
     [1] = '1',
