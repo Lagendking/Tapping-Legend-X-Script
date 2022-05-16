@@ -84,33 +84,6 @@ a:Toggle("Auto Tap",function(bool)
     end)
 end)
 
-a:Toggle("Auto Farm (Teleport)ㅤ",function(bool)
-    afTeleport = bool
-    spawn(function()
-        while afTeleport do
-            wait()
-            local args = {[1] = drop}
-            game:GetService("ReplicatedStorage").Remotes.Tap:FireServer(unpack(args))
-        end
-    end)
-    spawn(function()
-        while afTeleport do
-            wait()
-            for i, v in pairs(Workspace.Drops:GetChildren()) do
-                local gc = v:GetChildren()
-                local count = #gc
-                if count >= 1 then
-                    local picked = gc[math.random(1, count)]
-                    if not v:FindFirstChild(drop) or v:FindFirstChild(drop).Model.HPBar.Bar.Health.AbsoluteSize == Vector2.new(0, 0) then
-                        game.Players.LocalPlayer.Character:MoveTo(picked.Circle.Position - Vector3.new(0, 0.5, 0))
-                        wait(0.5)
-                    end
-                end
-            end
-        end
-    end)
-end)
-
 a:Dropdown("Rebirth Amount",{unpack(Rebirths)},true,function(mob)
     if mob == '1' then
         rebirthAmount = 1 
