@@ -54,8 +54,8 @@ local Rebirths = {
 }
 
 local Codes = {
-    [1] = '10M'
-    [2] = '30kcoolcode'
+    [1] = '10M',
+    [2] = '30kcoolcode',
 }
 
 _G.MainColor = Color3.fromRGB(117, 30, 255)
