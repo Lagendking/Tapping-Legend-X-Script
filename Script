@@ -203,8 +203,8 @@ a:Toggle("Auto Equip",function(bool)
     end)
 end)
 
-b:Button("Redeem Codes",function()
-    for _, v in pairs(Codes) do
+b:Button("Codes",function()
+    for i, v in pairs(Codes) do
         local args = {[1] = v}
         game:GetService("ReplicatedStorage").Remotes.RedeemCode:InvokeServer(unpack(args))
     end
