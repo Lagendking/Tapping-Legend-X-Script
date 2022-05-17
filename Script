@@ -52,6 +52,12 @@ local Rebirths = {
     [26] = '2Qd',
     [27] = '10Qd',
 }
+
+local Codes = {
+    [1] = '10M'
+    [2] = '30kcoolcode'
+}
+
 _G.MainColor = Color3.fromRGB(117, 30, 255)
 _G.MainTextColor = Color3.fromRGB(235, 235, 235)
 _G.SecondaryColor = Color3.fromRGB(35, 35, 35)
@@ -195,6 +201,13 @@ a:Toggle("Auto Equip",function(bool)
             game:GetService("ReplicatedStorage").Remotes.EquipBest:InvokeServer()
         end
     end)
+end)
+
+b:Button("Redeem Codes",function()
+    for _, v in pairs(Codes) do
+        local args = {[1] = v}
+        game:GetService("ReplicatedStorage").Remotes.RedeemCode:InvokeServer(unpack(args))
+    end
 end)
 
 getgenv().Speed = game.Players.LocalPlayer.Character.Humanoid.WalkSpeed
