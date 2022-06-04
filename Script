@@ -3,5 +3,5 @@ local premium = {
 	[2] = 'llYouGotMossedlI',
 	[3] = 'Gac_Pac',
 	[4] = 'lagend',
-	[5] = 'example',	[6] = 'test',
+	[5] = 'example',
 }
