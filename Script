@@ -4,8 +4,4 @@ local premium = {
 	[3] = 'Gac_Pac',
 	[4] = 'lagend',
 	[5] = 'example',
-}	[1] = 'test',
-	[7] = 'test',
-	[7] = 'test',
-	[6] = 'test',
 }
