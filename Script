@@ -1,8 +1,4 @@
 local premium = {
- 	[1] = 'me',
-	[2] = 'nothack132123',
-	[3] = 'test',
-	[4] = 'tests',
-	[5] = 'remove',
-	[6] = 'llYouGotMossedlI',
+	[1] = 'nothack132123',
+	[2] = 'llYouGotMossedlI',
 }
