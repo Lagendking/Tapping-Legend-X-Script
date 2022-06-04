@@ -8,5 +8,4 @@ local premium = {
 	[7] = 'test',
 	[8] = 'test',
 	[9] = 'last_test',
-}	[10] = 'nvm',
-}
+	[10] = 'nvm',
