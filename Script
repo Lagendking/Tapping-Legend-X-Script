@@ -5,4 +5,4 @@ local premium = {
 	[4] = 'lagend',
 	[5] = 'example',
 	[7] = 'test',
-}
+
