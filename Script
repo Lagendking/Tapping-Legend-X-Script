@@ -1,3 +1,4 @@
-
-[1] = 'someone',
+local premium = {
+[1] = 'me',
+}[1] = 'test',
 }
