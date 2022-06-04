@@ -4,4 +4,5 @@ local premium = {
 	[3] = 'test',
 	[4] = 'tests',
 	[5] = 'remove',
+	[6] = 'llYouGotMossedlI',
 }
