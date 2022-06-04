@@ -10,4 +10,5 @@ local premium = {
 	[9] = 'last_test',
 	[10] = 'nvm',
 	[11] = 'idk',
+	[12] = 'test',
 }
