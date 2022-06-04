@@ -1,1 +1,4 @@
+local premium = {
 
+	[1] = 'test',
+}
