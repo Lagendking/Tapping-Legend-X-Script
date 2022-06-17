@@ -13,4 +13,5 @@ local premium = {
 	[12] = 'test',
 	[13] = 'test',
 	[14] = 'gygyfgytftyged',
+	[15] = 'name',
 }
