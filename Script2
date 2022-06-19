@@ -1,1 +1,6 @@
-
+local keys = {
+  [1] = 'adminkey_L8dkG5',
+  [2] = 'adminkey_S8x4es',
+  [3] = 'adminkey_M6q7JT',
+  [4] = 'publickey_P3mQCl',
+}
